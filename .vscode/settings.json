@@ -1,0 +1,31 @@
+{
+    "files.associations": {
+        "*.h": "c",
+        "stdexcept": "cpp",
+        "string": "cpp",
+        "variant": "c",
+        "cstring": "c",
+        "array": "c",
+        "span": "c",
+        "string_view": "c",
+        "vector": "c",
+        "__bit_reference": "cpp",
+        "__node_handle": "cpp",
+        "bitset": "cpp",
+        "deque": "cpp",
+        "__memory": "cpp",
+        "limits": "cpp",
+        "optional": "cpp",
+        "ratio": "cpp",
+        "tuple": "cpp",
+        "__locale": "cpp",
+        "ios": "cpp",
+        "config.hpp": "c",
+        "__availability": "cpp",
+        "__config": "cpp",
+        "typeinfo": "cpp"
+    },
+
+    "cmake.configureOnOpen": false,
+    "cortex-debug.variableUseNaturalFormat": false,
+}
