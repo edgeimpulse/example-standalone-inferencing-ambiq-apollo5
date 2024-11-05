@@ -26,12 +26,12 @@
 const ns_power_config_t ns_pwr_config = {
     .api = &ns_power_V1_0_0,
     .eAIPowerMode = NS_MAXIMUM_PERF,
-    .bNeedAudAdc = true,
+    .bNeedAudAdc = false,
     .bNeedSharedSRAM = true,
     .bNeedCrypto = false,
     .bNeedBluetooth = false,
     .bNeedUSB = true,
-    .bNeedIOM = true,
+    .bNeedIOM = false,
     .bNeedAlternativeUART = false,
     .b128kTCM = false,
     //.bNeedXtal = true,
@@ -62,7 +62,7 @@ void peripheral_init(void)
 
     // Pick either ns_uart_printf_enable or ns_itm_printf_enable dependin on your needs
     //ns_uart_printf_enable(); // use uart to print, uses less power
-    ns_itm_printf_enable();
+    //ns_itm_printf_enable();
     /* A note about printf and low power: printing over ITM impacts low power in two
         ways:
         1) enabling ITM prevents SoC from entering deep sleep, and
@@ -82,7 +82,6 @@ void peripheral_init(void)
 #endif
 
     ns_malloc_init(); // needed by EI
-    //NS_TRY(ns_peripheral_button_init(&button_config), "Button initialization failed.\n")
     NS_TRY(ns_timer_init(&ei_tickTimer), "Timer init failed.\n");
     ns_interrupt_master_enable();
 
