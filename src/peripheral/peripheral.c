@@ -19,6 +19,8 @@
 #include "ns_malloc.h"
 #include "ns_peripherals_power.h"
 #include "am_devices_led.h"
+#include "am_mcu_apollo.h"
+#include "am_bsp.h"
 
 /// NeuralSPOT Includes
 #include "ns_ambiqsuite_harness.h"
@@ -49,6 +51,12 @@ void peripheral_init(void)
 
     // NeuralSPOT inits
     NS_TRY(ns_core_init(&ns_core_cfg), "Core init failed.\n");
+
+        //
+    // Enable the I-Cache and D-Cache.
+    //
+    am_hal_cachectrl_icache_enable();
+    am_hal_cachectrl_dcache_enable(true);
 
 #ifdef ENERGY_MONITOR_ENABLE
     // This is for measuring power using an external power monitor such as
