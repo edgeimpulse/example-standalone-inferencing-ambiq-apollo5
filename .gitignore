@@ -1,3 +1,5 @@
 build/
 !.vscode/
 src/edge-impulse/edge-impulse-sdk/
+src/edge-impulse/tflite-model/
+src/edge-impulse/model-parameters/

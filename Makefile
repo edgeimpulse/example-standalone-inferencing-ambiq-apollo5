@@ -66,16 +66,7 @@ sources +=		$(wildcard src/edge-impulse/edge-impulse-sdk/classifier/*.cpp) \
 				$(wildcard src/edge-impulse/edge-impulse-sdk/tensorflow/lite/micro/*.cc) \
 				$(wildcard src/edge-impulse/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/*.cc) \
 				$(wildcard src/edge-impulse/edge-impulse-sdk/tensorflow/lite/core/api/*.cc) \
-				$(wildcard src/edge-impulse/model/tflite-model/*.cpp) \
-				$(wildcard src/edge-impulse/ingestion-sdk-platform/apollo5/*.cpp) \
-				$(wildcard src/edge-impulse/ingestion-sdk-platform/sensor/*.cpp) \
-				$(wildcard src/edge-impulse/ingestion-sdk-c/*.cpp) \
-				$(wildcard src/edge-impulse/inference/*.cpp) \
-				$(wildcard src/edge-impulse/firmware-sdk/*.cpp) \
-				$(wildcard src/edge-impulse/firmware-sdk/at-server/*.cpp) \
-				$(wildcard src/edge-impulse/firmware-sdk/QCBOR/src/*.c) \
-				$(wildcard src/edge-impulse/firmware-sdk/sensor-aq/*.cpp) \
-				$(wildcard src/edge-impulse/firmware-sdk/jpeg/*.cpp) \				
+				$(wildcard src/edge-impulse/tflite-model/*.cpp)			
 
 # peripheral
 sources +=	$(wildcard src/peripheral/*.c) \
@@ -97,14 +88,12 @@ DEFINES += EI_TENSOR_ARENA_LOCATION=".shared"
 
 LOCAL_INCLUDES += src/
 LOCAL_INCLUDES += src/ns-core/
-LOCAL_INCLUDES += src/edge-impulse/
-LOCAL_INCLUDES += src/edge-impulse/model/
+LOCAL_INCLUDES += src/edge-impulse
 LOCAL_INCLUDES += src/edge-impulse/edge-impulse-sdk/CMSIS/Core/Include
 LOCAL_INCLUDES += src/edge-impulse/edge-impulse-sdk/CMSIS/NN/Include/
 LOCAL_INCLUDES += src/edge-impulse/edge-impulse-sdk/CMSIS/DSP/Include/
 LOCAL_INCLUDES += src/edge-impulse/edge-impulse-sdk/CMSIS/DSP/PrivateInclude/
 LOCAL_INCLUDES += src/edge-impulse/edge-impulse-sdk/classifier/
-LOCAL_INCLUDES += src/edge-impulse/ingestion-sdk-c/
 
 CFLAGS += -flax-vector-conversions
 CFLAGS     += $(addprefix -D,$(DEFINES))

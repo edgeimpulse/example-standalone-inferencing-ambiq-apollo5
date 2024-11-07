@@ -6,7 +6,7 @@ Edge Impulse firmware for Ambiq Apollo 5 EVB (apollo510_evb)
 Apollo 5 EVB
 GCC v13.x.x
 [Segger Jlink software](https://www.segger.com/downloads/jlink/)
-Deploy the model you want to test as a C++ library, copy the folder **model-paramters** and **tflite-model** into [src/edge-impulse/model](src/edge-impulse/model) and paste the raw feature in 
+Deploy the model you want to test as a C++ library, copy the folder **edge-impulse-sdk**, **model-paramters** and **tflite-model** into [src/edge-impulse](src/edge-impulse) and paste the raw feature in 
 ```
 static const float features[] = {
     // copy raw features here
