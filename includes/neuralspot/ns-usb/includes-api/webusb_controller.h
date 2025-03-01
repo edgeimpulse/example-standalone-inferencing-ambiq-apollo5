@@ -62,6 +62,13 @@ void webusb_register_msg_cb(webusb_rx_cb cb, void *param);
  */
 void webusb_register_raw_cb(webusb_rx_cb cb, void *param);
 
+/**
+ * @brief Check if USB is connected
+ *
+ * @return uint32_t 1 if connected, 0 if not
+ */
+uint32_t webusb_is_connected(void);
+
 #if defined __cplusplus
 }
 #endif

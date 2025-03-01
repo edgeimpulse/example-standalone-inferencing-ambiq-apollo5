@@ -62,7 +62,16 @@ task.h is included from an application file. */
 /* The application writer has already defined the array used for the RTOS
 heap - probably so it can be placed in a special segment or address. */
 size_t const ucHeapSize  __attribute ((weak));
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#pragma GCC diagnostic ignored "-Wuninitialized"
+#endif
 uint8_t ucHeap[]  __attribute ((weak));
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
 #else
     #define configTOTAL_HEAP_SIZE NS_MALLOC_HEAP_SIZE_IN_K * 1024
 size_t const ucHeapSize = configTOTAL_HEAP_SIZE;

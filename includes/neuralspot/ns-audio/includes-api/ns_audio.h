@@ -55,7 +55,6 @@
     #ifdef __cplusplus
 extern "C" {
     #endif
-
     #include "am_bsp.h"
     #include "am_mcu_apollo.h"
     #include "am_util.h"
@@ -68,14 +67,16 @@ extern "C" {
         { .major = 1, .minor = 0, .revision = 0 }
     #define NS_AUDIO_V2_0_0                                                                        \
         { .major = 2, .minor = 0, .revision = 0 }
-
+    #define NS_AUDIO_V2_1_0                                                                        \
+        { .major = 2, .minor = 1, .revision = 0 }
     #define NS_AUDIO_OLDEST_SUPPORTED_VERSION NS_AUDIO_V0_0_1
-    #define NS_AUDIO_CURRENT_VERSION NS_AUDIO_V2_0_0
+    #define NS_AUDIO_CURRENT_VERSION NS_AUDIO_V2_1_0
     #define NS_AUDIO_API_ID 0xCA0001
 
 extern const ns_core_api_t ns_audio_V0_0_1;
 extern const ns_core_api_t ns_audio_V1_0_0;
 extern const ns_core_api_t ns_audio_V2_0_0;
+extern const ns_core_api_t ns_audio_V2_1_0;
 extern const ns_core_api_t ns_audio_oldest_supported_version;
 extern const ns_core_api_t ns_audio_current_version;
 
@@ -112,6 +113,8 @@ typedef struct {
     bool low_power_mode;
     bool repeating_trigger_mode;
     bool dcmp_enable;
+    int left_gain;
+    int right_gain;
 } ns_audadc_cfg_t;
 
 /// @brief PDM Clock Frequency
@@ -133,6 +136,8 @@ typedef struct {
     ns_audio_pdm_clock_e clock_freq;
     ns_audio_pdm_micsel_e mic; ///< VoS Kit breakout board PDM mic slot
     uint8_t numBytes;          // size of sample word in bytes
+    am_hal_pdm_gain_e left_gain;
+    am_hal_pdm_gain_e right_gain;
 } ns_pdm_cfg_t;
 
 // Forward declaration to get around using it in cb
@@ -199,6 +204,20 @@ extern ns_audio_config_t *g_ns_audio_config;
 extern uint32_t ns_audio_init(ns_audio_config_t *);
 
 /**
+ * @brief Start audio capture, must be called after ns_audio_init
+ *
+ * @param cfg : desired configuration
+ */
+extern uint32_t ns_start_audio(ns_audio_config_t *);
+
+/**
+ * @brief Stop audio capture
+ *
+ * @param cfg : desired configuration
+ */
+extern uint32_t ns_end_audio(ns_audio_config_t *);
+
+/**
  * @brief Extract int16 PCM from data collected by ADC
  *
  * @param pcm - resulting PCM data
@@ -215,6 +234,13 @@ extern void ns_audio_getPCM(int16_t *pcm, uint32_t *raw, int16_t len);
  */
 extern void ns_audio_getPCM_v2(ns_audio_config_t *config, void *pcm);
 
+/**
+ * @brief Set gain of audio source
+ *
+ * @param left_gain - left channel gain
+ * @param right_gain - right channel gain
+ */
+extern uint32_t ns_audio_set_gain(int left_gain, int right_gain);
     #ifdef __cplusplus
 }
     #endif

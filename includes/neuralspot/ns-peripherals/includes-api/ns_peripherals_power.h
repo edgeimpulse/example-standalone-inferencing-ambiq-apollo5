@@ -54,7 +54,7 @@
     #ifdef __cplusplus
 extern "C" {
     #endif
-
+    #include "ns_core.h"
     #include "am_bsp.h"
     #include "am_mcu_apollo.h"
     #include "am_util.h"
@@ -93,6 +93,7 @@ typedef struct {
     bool b128kTCM;                ///< Only enable 128k when true, 384k otherwise
     bool bEnableTempCo;           ///< Enable Temperature Compensation
     bool bNeedITM;                ///< Enable Temperature Compensation
+    bool bNeedXtal;               ///< Enable XTAL
 } ns_power_config_t;
 
 extern const ns_power_config_t ns_development_default; ///< Enables most things

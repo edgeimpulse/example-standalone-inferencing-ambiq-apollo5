@@ -69,6 +69,7 @@ void ns_pmu_get_name(ns_pmu_config_t *cfg, uint32_t i, char *name);
 uint32_t ns_pmu_print_counters(ns_pmu_config_t *cfg);
 void ns_pmu_event_create(ns_pmu_event_t *event, uint32_t eventId, ns_pmu_event_counter_size_e counterSize);
 void ns_pmu_reset_counters();
+void ns_pmu_reset_config(ns_pmu_config_t *cfg);
 
 // Callback for tensorflow invoke
 typedef int (*invoke_fp)();
